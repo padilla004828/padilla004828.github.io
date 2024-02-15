@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+
+		<style>
+		.yes {
+		  display: inline-block;
+		  border-radius: 4px;
+		  background-color: #04AA6D;
+		  border: none;
+		  color: #FFFFFF;
+		  text-align: center;
+		  font-size: 28px;
+		  padding: 20px;
+		  width: 200px;
+		  transition: all 0.5s;
+		  cursor: pointer;
+		  margin: 5px;
+		}
+
+		.yes span {
+		  cursor: pointer;
+		  display: inline-block;
+		  position: relative;
+		  transition: 0.5s;
+		}
+
+		.yes span:after {
+		  content: '\00bb';
+		  position: absolute;
+		  opacity: 0;
+		  top: 0;
+		  right: -20px;
+		  transition: 0.5s;
+		}
+
+		.yes:hover span {
+		  padding-right: 25px;
+		}
+
+		.yes:hover span:after {
+		  opacity: 1;
+		  right: 0;
+		}
+
+		.no {
+		  display: inline-block;
+		  border-radius: 4px;
+		  background-color: #f4511e;
+		  border: none;
+		  color: #FFFFFF;
+		  text-align: center;
+		  font-size: 28px;
+		  padding: 20px;
+		  width: 200px;
+		  transition: all 0.5s;
+		  cursor: pointer;
+		  margin: 5px;
+		}
+
+		.no span {
+		  cursor: pointer;
+		  display: inline-block;
+		  position: relative;
+		  transition: 0.5s;
+		}
+
+		.no span:after {
+		  content: '\00bb';
+		  position: absolute;
+		  opacity: 0;
+		  top: 0;
+		  right: -20px;
+		  transition: 0.5s;
+		}
+
+		.no:hover span {
+		  padding-right: 25px;
+		}
+
+		.no:hover span:after {
+		  opacity: 1;
+		  right: 0;
+		}
+
+		.center {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  height: 200px;
+		 }
+		 body {
+			font-family: 'Sofia';font-size: 22px;
+		}
+		</style>
+	</head>
+
+
+<body>
+
+
+	<div class="center">
+		
+
+		<h1>Will u be my Valentines Date? 👉🏻👈🏻 (Late 😭)</h1>
+
+
+	</div>
+
+	<div class="center">
+		
+
+		<img id="gifIMG" src="1.gif" style="width:200px;height:200px;">
+
+
+
+	</div>
+	
+	<div class="center">
+		
+
+		<button class="yes" id="yesBTN" style="vertical-align:middle" onclick="yesNaYes()"><span>Yes </span></button>
+		<button class="no" id="noBTN" style="vertical-align:middle" onclick="batMoPinindotNo()"><span>No </span></button>
+
+
+	</div>
+
+
+
+	<script>
+		var noCount = 0;
+		var yesCount = 0;
+
+	    var yes = document.getElementById("yesBTN");
+	    var no = document.getElementById("noBTN");
+
+		function palitanAngGIF(count) {
+
+			document.getElementById("gifIMG").src = count+".gif";
+
+		}
+
+	    function batMoPinindotNo() {
+
+	    	
+	        noCount++;
+	    	
+	    	if(noCount<=20){
+				const noSagot = ["No", "Ayaw mo? ", "Sorry late 🥲", "Babawi akooo! 😭", "yieee papayag na yan 🥲", "why u bitchin 😿", "Date na tayoo pweaase 👉🏻👈🏻", "This sunday na, G?", "Nood tayo moviee 🍿", "Kain sa tokyo-tokyoo 🍙", "mag arcadee dinn 🕹️", "di ka talaga papayag? 😭", "why u do dis 😥", "bakit no ka ng no 😿", "click mo na yung yes dali naa 🥰", "ay nag no ka parin talaga ah 😭", "Yes", "YES.", "YES. 🤨", "YES! 🙂", "Bawal na mag NO!"];
+	        	no.innerHTML =  noSagot[noCount];
+			}
+
+			else{
+				document.getElementById("noBTN").disabled = true;
+
+			}
+
+	    	
+
+	        palakihinSiYes();
+	        tigilanMoSiNo();
+	        palitanAngGIF(noCount);
+	        
+	    }
+
+	    function yesNaYes() {
+
+	    	yesCount++;
+
+			if(yesCount<=4){
+				const yesSagot = ["Yes", "Yes", "Kanina no ka ng no", "Naka " + noCount + " na 'No' bago ka mag yes", "Yay Lezzgoo"];
+	        	yes.innerHTML =  yesSagot[yesCount];
+	        	palitanAngGIF(21+yesCount);
+			}
+			else{
+				yes.innerHTML =  "Date na us 🥰";
+				palitanAngGIF(26);
+			}
+	        document.getElementById("yesBTN").style.transform = 'translateY(25px)';
+	    }
+	  	
+	  	let yesButton = document.querySelector(".yes");
+		let orgiSize = yesButton.getBoundingClientRect().width;
+		let increments = 0;
+
+		function palakihinSiYes() {
+			increments += 50; 
+			var percentage = Math.floor((orgiSize + increments) / orgiSize * 100) / 100
+			yesButton.style.transform = `scale(${percentage})`; 
+		}
+
+		function tigilanMoSiNo(){
+			increments -= 20; 
+			document.getElementById("noBTN").style.transform = 'translateX('+increments+'px)';
+		}
+   </script>
+</body>
+</html>
